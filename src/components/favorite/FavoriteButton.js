@@ -10,8 +10,6 @@ function FavoriteButton({ movieId }) {
 
   const userId = localStorage.getItem("userid");
 
-  setToken = ""
-
   useEffect(() => {
     if (token == null) {
       setBtnndisable({ backgroundColor: "white", color: "black", boxShadow: "0px 0px 2px 2px", cursor: "not-allowed" })
