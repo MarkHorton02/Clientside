@@ -31,7 +31,7 @@ function FavoriteView() {
   const [movieDetails, setMovieDetails] = useState([]);
 
   useEffect(() => {
-    favoriteMovies.map((movie) => {
+    favoriteMovies.forEach((movie) => {
       tmdbApi.detail("movie", movie.movieId, { params: {} }).then((res) => {
         setMovieDetails((movieDetails) => [...movieDetails, res]);
       });

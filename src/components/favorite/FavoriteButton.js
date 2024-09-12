@@ -9,14 +9,15 @@ function FavoriteButton({ movieId }) {
   const [token, setToken] = useState(localStorage.getItem("jwt"));
   const [btnndisable, setBtnndisable] = useState()
 
+  console.log(localStorage.getItem("jwt"));
   const userId = localStorage.getItem("userid");
   console.log(userId)
   console.log(token)
 
   useEffect(() => {
-    if (token == null) {
-      setBtnndisable({ backgroundColor: "white", color: "black", boxShadow: "0px 0px 2px 2px", cursor: "not-allowed" })
-    }
+    // if (token == null) {
+    //   setBtnndisable({ backgroundColor: "white", color: "black", boxShadow: "0px 0px 2px 2px", cursor: "not-allowed" })
+    // }
     async function fetchData() {
       try {
         const response = await axios.get(`/api/favorites/${userId}/${movieId}`);
