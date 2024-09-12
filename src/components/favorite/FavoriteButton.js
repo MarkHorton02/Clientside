@@ -5,10 +5,13 @@ import "./favorite-button.css";
 
 function FavoriteButton({ movieId }) {
   const [favorite, setFavorite] = useState(false);
+  console.log("favouritebutton")
   const [token, setToken] = useState(localStorage.getItem("jwt"));
   const [btnndisable, setBtnndisable] = useState()
 
   const userId = localStorage.getItem("userid");
+  console.log(userid)
+  console.log(token)
 
   useEffect(() => {
     if (token == null) {
