@@ -10,7 +10,7 @@ function FavoriteButton({ movieId }) {
   const [btnndisable, setBtnndisable] = useState()
 
   const userId = localStorage.getItem("userid");
-  console.log(userid)
+  console.log(userId)
   console.log(token)
 
   useEffect(() => {
