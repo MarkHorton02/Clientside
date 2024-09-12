@@ -23,15 +23,33 @@ const Login = () => {
         password
     }
 
-    const LoginHandle = () => {
-        console.log("Enter login")
-        axios.post('https://backend-final-copy-production.up.railway.app/users/login', user).then(function (response) {
+    const LoginHandle = async () => {
+        console.log("Enter login");
+        // const response = await fetch(
+        //     "https://backend-final-copy-production.up.railway.app/users/login",
+        //     {
+        //       method: "POST",
+        //       headers: {
+        //         "Content-Type":"application/json"
+        //       },
+        //       body: JSON.stringify({
+        //         email:email,
+        //         password: password
+        //       })
+        //     }
+        //   );
+        //   const output = await response.json();
+        //   console.log(response);
+        //   console.log(output.token);
+        axios.post('https://backend-final-copy-production.up.railway.app/users/login', user).then(function (res) {
             // const output = res.json()
             // console.log(output)
             console.log("Enter then")
-            localStorage.setItem('jwt', '124q3cdfgdraw3q244444w555cfgudtse57w34s5eu8cfise58');
-            axios.get(`http://localhost:5001/users/loggeduser?email=${email}`).then(res => { localStorage.setItem("userid", res.data.user._id) });
-            localStorage.setItem('loggeduser', email);
+            console.log(res.data);
+            
+            localStorage.setItem('jwt', res.data.token);
+            localStorage.setItem("userid", res.data.email) ;
+            localStorage.setItem('loggeduser', res.data.email);
             navigate("/");
             window.location.reload()
         })

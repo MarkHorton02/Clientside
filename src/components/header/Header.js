@@ -20,7 +20,7 @@ const Header = () => {
   const { pathname } = useLocation();
   const headerRef = useRef(null);
   const [token, setToken] = useState(localStorage.getItem("jwt"));
-  const [loggeduseremail] = useState(localStorage.getItem("loggeduser"))
+  const [loggeduseremail,setLogedduseremail] = useState(localStorage.getItem("loggeduser"))
   const [loggeduser,setLogedduser] = useState()
   const active = headerNav.findIndex((e) => e.path === pathname);
   const logoutHandler = () => {
@@ -34,8 +34,14 @@ const Header = () => {
     navigate('/login')
   }
   useEffect(() => {
-    axios.get(`http://localhost:5001/users/loggeduser?email=${loggeduseremail}`).then(res=>{setLogedduser(res.data.user)})
+    // axios.get(`http://localhost:5001/users/loggeduser?email=${loggeduseremail}`).then(res=>{setLogedduser(res.data.user)})
+    const loguser = localStorage.getItem("loggeduser")
+    console.log(loguser);
+    
+    setLogedduser(loguser);
     console.log(localStorage.getItem("loggeduser"))
+    console.log(loggeduser);
+    
     const shrinkHeader = () => {
       if (
         document.body.scrollTop > 100 ||
@@ -76,17 +82,17 @@ const Header = () => {
         <div className='header__nav'>
           {token == null ? (
             <li className='login' onClick={loginHandler}>
-              <i class="bi bi-box-arrow-in-left"></i> Login 
+              <i className="bi bi-box-arrow-in-left"></i> Login 
             </li>
           ) : (
-            <div class="dropdown">
-              <div class="dropdown__toggle" onClick={handleToggle}>
-                <i class="bi bi-person-circle"></i><l1>Hi, {loggeduser?.name}</l1>
+            <div className="dropdown">
+              <div className="dropdown__toggle" onClick={handleToggle}>
+                <i className="bi bi-person-circle"></i><l1>Hi, {loggeduseremail}</l1>
               </div>
               {isOpen && (
-                <div class="dropdown__menu">
+                <div className="dropdown__menu">
                   <li className="signout" onClick={logoutHandler}>
-                    Logout <i class="bi bi-box-arrow-right"></i>
+                    Logout <i className="bi bi-box-arrow-right"></i>
                   </li>
                 </div>
               )}
