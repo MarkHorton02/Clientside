@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import './Login.css'
 import axios from 'axios';
@@ -14,9 +14,6 @@ const Login = () => {
     const [password, setPassword] = useState();
     const [ emailError,setEmailError] = useState()
     const [passwordError,setPasswordError] = useState()
-    // useEffect(() => {
-    //     axios.get(`https://backend-final-copy-production.up.railway.app:8080/users?email=${email}`).then(res => { console.log(res.data.user._id) })
-    // }, [email])
 
     const user = {
         email,
