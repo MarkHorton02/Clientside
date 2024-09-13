@@ -33,7 +33,7 @@ const Footer = () => {
             <div className='footer__content__menu'>
               <Link to='/'>Mark Horton</Link>
               <Link to='/'>Chris Cade</Link>
-              <Link to='/'>Kyle Lawrence</Link>
+              <Link to='/'>Kyle Lawrenson</Link>
               <Link to='/'>Liam Armstrong</Link>
             </div>
           </div>
